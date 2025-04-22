@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import './App.css'
+import { ItemList } from './components/ItemList';
+
+const items = ["1", "2", "3", "4"];
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      
+      <ItemList items={items} />
     </>
   )
 }
