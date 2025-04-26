@@ -1,44 +1,31 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Menu } from './Page/Menu';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      basket: [],
-    };
-  }
+const App = () => {
+  const [basket, setBasket] = useState([]);
 
-  handleAddToCart = (product, quantity = 1) => {
-    this.setState((prevState) => {
-      const foundProduct = prevState.basket.find((entry) => entry.id === product.id);
+  const handleAddToCart = (product, quantity = 1) => {
+    setBasket((prevBasket) => {
+      const foundProduct = prevBasket.find((entry) => entry.id === product.id);
 
       if (foundProduct) {
-        return {
-          basket: prevState.basket.map((entry) =>
-            entry.id === product.id
-              ? { ...entry, quantity: entry.quantity + quantity }
-              : entry
-          ),
-        };
+        return prevBasket.map((entry) =>
+          entry.id === product.id
+            ? { ...entry, quantity: entry.quantity + quantity }
+            : entry
+        );
       }
 
-      return {
-        basket: [...prevState.basket, { ...product, quantity }],
-      };
+      return [...prevBasket, { ...product, quantity }];
     });
   };
 
-  render() {
-    const { basket } = this.state;
-
-    return (
-      <Menu
-        basketData={basket}
-        onAdd={this.handleAddToCart}
-      />
-    );
-  }
-}
+  return (
+    <Menu
+      basketData={basket}
+      onAdd={handleAddToCart}
+    />
+  );
+};
 
 export default App;
