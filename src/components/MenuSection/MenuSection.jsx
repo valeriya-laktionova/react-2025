@@ -1,4 +1,3 @@
-// MenuDisplay.jsx
 import React, { useState, useEffect } from 'react';
 import './MenuSection.css';
 import { Button } from '../Button/Button';
@@ -54,7 +53,7 @@ export const MenuDisplay = ({ addItem }) => {
               key={cat}
               onClick={() => {
                 setSelectedCategory(cat);
-                setVisibleItems(6); // при выборе новой категории сбрасываем "see more"
+                setVisibleItems(6);
               }}
             >
               {cat}

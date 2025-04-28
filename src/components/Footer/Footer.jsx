@@ -1,12 +1,14 @@
 import React from 'react';
 import './Footer.css';
+import { logo, instagramIcon, twitterIcon, youtubeIcon } from '../../assets/index';
+
 
 export const Footer = () => {
   return (
     <footer className="site-footer">
       <div className="footer-container">
         <div className="logo-col">
-          <img src="src/assets/logo.svg" alt="Logo" className="footer-logo" />
+          <img src={logo} alt="Logo" className="footer-logo" />
           <p className="footer-description">
             Takeaway & Delivery template <span className="footer-description-span">for small - medium businesses.</span>
           </p>
@@ -41,11 +43,12 @@ export const Footer = () => {
       <div className="footer-bottom">
         <p>Built by <a href="#">Flowbase</a> · Powered by <a href="#">Webflow</a></p>
         <div className="footer-socials">
-          <a href="#"><img src="src/assets/instagram.png" alt="Instagram" /></a>
-          <a href="#"><img src="src/assets/twitter.png" alt="Twitter" /></a>
-          <a href="#"><img src="src/assets/youtube.png" alt="YouTube" /></a>
+          <a href="#"><img src={instagramIcon} alt="Instagram" /></a>
+          <a href="#"><img src={twitterIcon} alt="Twitter" /></a>
+          <a href="#"><img src={youtubeIcon} alt="YouTube" /></a>
         </div>
       </div>
     </footer>
   );
 };
+
