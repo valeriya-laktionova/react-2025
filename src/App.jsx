@@ -1,12 +1,10 @@
-import { ItemList } from './components/ItemList';
-
-const items = ["1", "2", "3", "4"];
+import { Menu } from "./Page/Menu";
 
 function App() {
 
   return (
     <>
-      <ItemList items={items} />
+      <Menu></Menu>
     </>
   )
 }
