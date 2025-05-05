@@ -1,0 +1,172 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f5fafa;
+  margin: 0;
+  padding: 0;
+  color: #546285;
+}
+
+.menu-container {
+  padding: 60px 0;
+}
+
+.menu-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-block h2 {
+  font-size: 3.12rem;
+  color: #35B8BE;
+  margin-bottom: 26px;
+  line-height: 55px;
+  letter-spacing: 1.65px;
+  font-weight: normal;
+}
+
+.menu-block p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 27px;
+  letter-spacing: 0.36px;
+  margin: 0;
+}
+
+.menu-block p .tooltip {
+  position: relative;
+  color: #2abfbd;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0 4px;
+}
+
+.menu-block p .tooltip .tooltip-text {
+  visibility: hidden;
+  width: max-content;
+  background-color: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.menu-block p .tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu-intro {
+  margin: 0 auto;
+  max-width: 470px;
+  text-align: center;
+}
+
+.menu-actions {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 0;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 40px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.item-card {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  text-align: left;
+  display: flex;
+  padding: 26px;
+  align-items: center;
+  min-height: 140px;
+}
+
+.item-card img {
+  width:  100px;
+  height: 100px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.card-details {
+  flex: 1;
+  padding-left: 24px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h4 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #08090a;
+}
+
+.card-header span {
+  color: #35b8be;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.card-details p {
+  font-size: 0.92rem;
+  color: #546285;
+  margin: 12px 0 14px;
+  line-height: 1.4;
+}
+
+.order-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.order-form input {
+  width: 50px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.order-form button {
+  background-color: #35b8be;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.order-form button:hover {
+  background-color: #2aa6ab;
+}
+
+
+
+
+
+
