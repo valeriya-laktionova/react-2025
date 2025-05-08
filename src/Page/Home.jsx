@@ -1,14 +1,15 @@
 import React, { useMemo } from 'react';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
-import { MenuDisplay } from '../components/MenuSection/MenuSection';
+import  HomeSection  from '../components/HomeSection/HomeSection'; 
 
-export const Menu = ({ cartItems, onAdd, totalItemCount }) => {
+export const HomePage = ({ totalItemCount }) => {
   return (
     <div>
       <Header cartCount={totalItemCount} />
-      <MenuDisplay cartItems={cartItems} addItem={onAdd} />
+      <HomeSection />
       <Footer />
     </div>
   );
 };
+
