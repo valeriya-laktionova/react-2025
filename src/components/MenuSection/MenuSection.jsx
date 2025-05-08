@@ -1,32 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './MenuSection.css';
 import { Button } from '../Button/Button';
 import { ItemList } from '../ItemList/ItemList';
+import { useFetch } from '../../hooks/useFetch';
 
 export const MenuDisplay = ({ addItem }) => {
-  const [menuItems, setMenuItems] = useState([]);
   const [visibleItems, setVisibleItems] = useState(6);
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  useEffect(() => {
-    const fetchMeals = async () => {
-      try {
-        const res = await fetch('https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals');
-        const data = await res.json();
-        setMenuItems(data);
-      } catch (err) {
-        console.error('Error fetching meals:', err);
-      }
-    };
-
-    fetchMeals();
-  }, []);
+  const {
+    data: menuItems = [],    
+    loading,
+    error
+  } = useFetch('https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals');
 
   const handleSeeMore = () => {
-    setVisibleItems(prevVisible => prevVisible + 6);
+    setVisibleItems(prev => prev + 6);
   };
 
-  const categories = ['All', ...new Set(menuItems.map(item => item.category))];
+  const categories = ['All', ...new Set((menuItems || []).map(item => item.category))];
 
   const filteredItems = selectedCategory === 'All'
     ? menuItems
@@ -61,15 +53,22 @@ export const MenuDisplay = ({ addItem }) => {
           ))}
         </div>
 
-        <ItemList
-          items={filteredItems.slice(0, visibleItems)}
-          addItem={addItem}
-        />
+        {loading && <p>Loading menu...</p>}
+        {error && <p>Error loading menu: {error}</p>}
 
-        {visibleItems < filteredItems.length && (
-          <Button variant="see-more" onClick={handleSeeMore}>
-            See more
-          </Button>
+        {!loading && !error && (
+          <>
+            <ItemList
+              items={filteredItems.slice(0, visibleItems)}
+              addItem={addItem}
+            />
+
+            {visibleItems < filteredItems.length && (
+              <Button variant="see-more" onClick={handleSeeMore}>
+                See more
+              </Button>
+            )}
+          </>
         )}
       </section>
     </div>
