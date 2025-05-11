@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Header.css';
 import { Cart } from '../CartIcon/CartIcon';
 
@@ -7,10 +8,33 @@ export const Header = ({ cartCount }) => {
     <header className="header">
       <img src="src/assets/logo.svg" alt="Logo" className="logo" />
       <nav className="nav">
-        <a href="/" className="nav-link">Home</a>
-        <a href="/menu" className="nav-link">Menu</a>
-        <a href="#" className="nav-link">Company</a>
-        <a href="#" className="nav-link">Login</a>
+        <NavLink
+          to="/"
+          className={({ isActive }) => isActive ? 'nav-link menu-active' : 'nav-link'}
+        >
+          Home
+        </NavLink>
+
+        <NavLink
+          to="/menu"
+          className={({ isActive }) => isActive ? 'nav-link menu-active' : 'nav-link'}
+        >
+          Menu
+        </NavLink>
+
+        <NavLink
+          to="/company"
+          className={({ isActive }) => isActive ? 'nav-link menu-active' : 'nav-link'}
+        >
+          Company
+        </NavLink>
+
+        <NavLink
+          to="/login"
+          className={({ isActive }) => isActive ? 'nav-link menu-active' : 'nav-link'}
+        >
+          Login
+        </NavLink>
       </nav>
       <Cart cartCount={cartCount} />
     </header>
