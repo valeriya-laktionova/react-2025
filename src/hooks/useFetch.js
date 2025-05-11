@@ -7,24 +7,40 @@ export const useFetch = (url, options = {}) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
+
       try {
         const response = await fetch(url, options);
+        const status = response.status;
 
-        if (!response.ok) {
-          throw new Error("Ошибка загрузки данных");
+        let result = null;
+        if (response.ok) {
+          result = await response.json();
+          setData(result);
+        } else {
+          throw new Error(`Request failed with status ${status}`);
         }
 
-        const result = await response.json();
-        setData(result);
+        // ЛОГГЕР
+        const log = {
+          url,
+          method: options.method || "GET",
+          body: options.body || null,
+          status,
+          timestamp: new Date().toISOString(),
+        };
+
+        const key = `fetchLog_${url}_${Date.now()}`;
+        localStorage.setItem(key, JSON.stringify(log));
       } catch (err) {
-        setError(err.message || "Ошибка при запросе данных");
+        setError(err.message || "Unknown error");
       } finally {
         setLoading(false);
       }
     };
 
     fetchData();
-  }, [url, options]);
+  }, [url, JSON.stringify(options)]);
 
   return { data, loading, error };
 };
