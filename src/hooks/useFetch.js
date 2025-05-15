@@ -10,19 +10,6 @@ export const useFetch = (url, options = {}) => {
       try {
         const response = await fetch(url, options);
 
-        const logEntry = {
-          url,
-          payload: options.body ? JSON.parse(options.body) : null,
-          status: response.status,
-          timestamp: new Date().toISOString(),
-        };
-
-        const prevLogs = JSON.parse(localStorage.getItem("apiLogs")) || [];
-        localStorage.setItem(
-          "apiLogs",
-          JSON.stringify([...prevLogs, logEntry])
-        );
-
         if (!response.ok) {
           throw new Error("Ошибка загрузки данных");
         }
