@@ -1,15 +1,16 @@
-
 import React from 'react';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
-import LoginSection from '../components/LoginSection/LoginSection';
+import Company from '../components/CompanyPage/CompanyPage';
 
-export const Login = () => {
+const CompanyPage: React.FC = () => {
   return (
-    <div>
+    <>
       <Header cartCount={0} />
-      <LoginSection />
+      <Company />
       <Footer />
-    </div>
+    </>
   );
 };
+
+export default CompanyPage;

@@ -2,23 +2,41 @@ import React, { useState } from 'react';
 import { Button } from '../Button/Button';
 import './ItemList.css';
 
-export const ItemList = ({ items, addItem }) => {
-  const [quantities, setQuantities] = useState({});
+type Item = {
+  id: string;
+  meal: string;
+  price: number;
+  img: string;
+  instructions: string;
+};
 
-  const handleQuantityChange = (id, value) => {
+type Props = {
+  items: Item[];
+  addItem: (item: Omit<Item, 'img' | 'instructions'>, quantity: number) => void;
+};
+
+export const ItemList: React.FC<Props> = ({ items, addItem }) => {
+  const [quantities, setQuantities] = useState<Record<string, number>>({});
+
+  const handleQuantityChange = (id: string, value: string) => {
     setQuantities(prev => ({
       ...prev,
-      [id]: value,
+      [id]: parseInt(value, 10),
     }));
   };
 
-  const getQuantity = (id) => {
+  const getQuantity = (id: string): number => {
     return quantities[id] || 1;
   };
 
-  const handleSubmit = (e, id, meal, price) => {
+  const handleSubmit = (
+    e: React.FormEvent,
+    id: string,
+    meal: string,
+    price: number
+  ) => {
     e.preventDefault();
-    const quantity = parseInt(getQuantity(id), 10);
+    const quantity = getQuantity(id);
     addItem({ id, meal, price }, quantity);
   };
 
