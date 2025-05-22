@@ -2,7 +2,11 @@ import React from 'react';
 import cartIcon from '../../assets/Frame.svg';
 import './CartIcon.css';
 
-export const Cart = ({ cartCount }) => {
+type CartProps = {
+  cartCount: number;
+};
+
+export const Cart: React.FC<CartProps> = ({ cartCount }) => {
   return (
     <div className="cart">
       <button className="cart-button">
@@ -12,4 +16,3 @@ export const Cart = ({ cartCount }) => {
     </div>
   );
 };
-
