@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Menu } from './Page/Menu';
-import { HomePage } from './Page/Home'; 
+import { HomePage } from './Page/Home';
+import { Login } from './Page/Login';
 
 const App = () => {
   const [basket, setBasket] = useState([]);
@@ -23,13 +25,24 @@ const App = () => {
     return basket.reduce((sum, item) => sum + item.quantity, 0);
   }, [basket]);
 
-  const pathname = window.location.pathname;
-
-  if (pathname === '/menu') {
-    return <Menu basketData={basket} onAdd={handleAddToCart} totalItemCount={totalItemCount} />;
-  } else {
-    return <HomePage basketData={basket} onAdd={handleAddToCart} totalItemCount={totalItemCount} />;
-  }
+  return (
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={<HomePage basketData={basket} onAdd={handleAddToCart} totalItemCount={totalItemCount} />}
+        />
+        <Route
+          path="/menu"
+          element={<Menu basketData={basket} onAdd={handleAddToCart} totalItemCount={totalItemCount} />}
+        />
+        <Route
+          path="/login"
+          element={<Login />}
+        />
+      </Routes>
+    </Router>
+  );
 };
 
 export default App;
