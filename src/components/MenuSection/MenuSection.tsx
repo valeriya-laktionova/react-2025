@@ -4,25 +4,39 @@ import { Button } from '../Button/Button';
 import { ItemList } from '../ItemList/ItemList';
 import { useFetch } from '../../hooks/useFetch';
 
-export const MenuDisplay = ({ addItem }) => {
-  const [visibleItems, setVisibleItems] = useState(6);
-  const [selectedCategory, setSelectedCategory] = useState('All');
+type MenuItem = {
+  id: string;
+  meal: string;
+  price: number;
+  img: string;
+  instructions: string;
+  category: string;
+};
+
+type MenuDisplayProps = {
+  addItem: (item: Omit<MenuItem, 'img' | 'instructions' | 'category'>, quantity: number) => void;
+  cartItems?: any[]; 
+};
+
+export const MenuDisplay: React.FC<MenuDisplayProps> = ({ addItem }) => {
+  const [visibleItems, setVisibleItems] = useState<number>(6);
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
   const {
-    data: menuItems = [],    
+    data: menuItems,
     loading,
-    error
-  } = useFetch('https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals');
+    error,
+  } = useFetch<MenuItem[]>('https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals');
 
   const handleSeeMore = () => {
-    setVisibleItems(prev => prev + 6);
+    setVisibleItems((prev) => prev + 6);
   };
 
-  const categories = ['All', ...new Set((menuItems || []).map(item => item.category))];
+  const categories: string[] = ['All', ...Array.from(new Set((menuItems ?? []).map(item => item.category)))];
 
   const filteredItems = selectedCategory === 'All'
-    ? menuItems
-    : menuItems.filter(item => item.category === selectedCategory);
+    ? (menuItems ?? [])
+    : (menuItems ?? []).filter(item => item.category === selectedCategory);
 
   return (
     <div className="menu-container">

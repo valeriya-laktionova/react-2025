@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import './LoginSection.css';
 
-export default function LoginSection() {
+const LoginSection: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { login, error } = useAuth();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await login(username, password);
       alert('Login successful!');
-    } catch (err) {
+    } catch (err: any) {
       alert('Login failed: ' + err.message);
     }
   };
@@ -64,4 +64,6 @@ export default function LoginSection() {
       </div>
     </div>
   );
-}
+};
+
+export default LoginSection;

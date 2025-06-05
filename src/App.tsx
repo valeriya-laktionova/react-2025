@@ -3,11 +3,19 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Menu } from './Page/Menu';
 import { HomePage } from './Page/Home';
 import { Login } from './Page/Login';
+import Company  from './Page/Company';
 
-const App = () => {
-  const [basket, setBasket] = useState([]);
+type BasketItem = {
+  id: string;
+  meal: string;
+  price: number;
+  quantity: number;
+};
 
-  const handleAddToCart = (product, quantity = 1) => {
+const App: React.FC = () => {
+  const [basket, setBasket] = useState<BasketItem[]>([]);
+
+  const handleAddToCart = (product: Omit<BasketItem, 'quantity'>, quantity = 1) => {
     setBasket((prevBasket) => {
       const foundProduct = prevBasket.find((entry) => entry.id === product.id);
       if (foundProduct) {
@@ -30,16 +38,15 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element={<HomePage basketData={basket} onAdd={handleAddToCart} totalItemCount={totalItemCount} />}
+          element={<HomePage totalItemCount={totalItemCount} />}
         />
         <Route
           path="/menu"
-          element={<Menu basketData={basket} onAdd={handleAddToCart} totalItemCount={totalItemCount} />}
+          element={<Menu cartItems={basket} onAdd={handleAddToCart} totalItemCount={totalItemCount} />}
         />
-        <Route
-          path="/login"
-          element={<Login />}
-        />
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/company" element={<Company/>} />
       </Routes>
     </Router>
   );
