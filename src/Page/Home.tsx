@@ -3,14 +3,10 @@ import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 import HomeSection from '../components/HomeSection/HomeSection';
 
-type HomePageProps = {
-  totalItemCount: number;
-};
-
-export const HomePage: React.FC<HomePageProps> = ({ totalItemCount }) => {
+export const HomePage: React.FC = () => {
   return (
     <div>
-      <Header cartCount={totalItemCount} />
+      <Header />
       <HomeSection />
       <Footer />
     </div>

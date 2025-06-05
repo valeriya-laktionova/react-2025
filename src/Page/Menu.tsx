@@ -16,10 +16,10 @@ type MenuProps = {
   totalItemCount: number;
 };
 
-export const Menu: React.FC<MenuProps> = ({ cartItems, onAdd, totalItemCount }) => {
+export const Menu: React.FC<MenuProps> = ({ cartItems, onAdd}) => {
   return (
     <div>
-      <Header cartCount={totalItemCount} />
+      <Header />
       <MenuDisplay cartItems={cartItems} addItem={onAdd} />
       <Footer />
     </div>
