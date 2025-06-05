@@ -72,10 +72,7 @@ export const MenuDisplay: React.FC<MenuDisplayProps> = ({ addItem }) => {
 
         {!loading && !error && (
           <>
-            <ItemList
-              items={filteredItems.slice(0, visibleItems)}
-              addItem={addItem}
-            />
+            <ItemList items={filteredItems.slice(0, visibleItems)} />
 
             {visibleItems < filteredItems.length && (
               <Button variant="see-more" onClick={handleSeeMore}>
