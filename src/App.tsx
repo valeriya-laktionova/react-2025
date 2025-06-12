@@ -1,9 +1,12 @@
+// src/App.tsx
 import React, { useState, useMemo } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Menu } from './Page/Menu';
 import { HomePage } from './Page/Home';
 import { Login } from './Page/Login';
-import Company  from './Page/Company';
+import Company from './Page/Company';
+import Cart from './Page/Cart'; 
+import PrivateRoute from '../src/route/PrivateRoute';
 
 type BasketItem = {
   id: string;
@@ -36,17 +39,21 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          element={<HomePage totalItemCount={totalItemCount} />}
-        />
+        <Route path="/" element={<HomePage />} />
         <Route
           path="/menu"
           element={<Menu cartItems={basket} onAdd={handleAddToCart} totalItemCount={totalItemCount} />}
         />
         <Route path="/login" element={<Login />} />
-
-        <Route path="/company" element={<Company/>} />
+        <Route path="/company" element={<Company />} />
+        <Route
+          path="/order"
+          element={
+            <PrivateRoute>
+              <Cart /> 
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );
