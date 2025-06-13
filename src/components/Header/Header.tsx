@@ -2,12 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
 import { Cart } from '../CartIcon/CartIcon';
+import { useAppSelector } from '../../hooks/hooks';
 
-type HeaderProps = {
-  cartCount: number;
-};
+export const Header: React.FC = () => {
+  const cartCount = useAppSelector(state =>
+    state.cart.items.reduce((total, item) => total + item.quantity, 0)
+  );
 
-export const Header: React.FC<HeaderProps> = ({ cartCount }) => {
   return (
     <header className="header">
       <img src="src/assets/logo.svg" alt="Logo" className="logo" />

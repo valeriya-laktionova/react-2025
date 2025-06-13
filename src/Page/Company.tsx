@@ -6,7 +6,7 @@ import Company from '../components/CompanyPage/CompanyPage';
 const CompanyPage: React.FC = () => {
   return (
     <>
-      <Header cartCount={0} />
+      <Header />
       <Company />
       <Footer />
     </>

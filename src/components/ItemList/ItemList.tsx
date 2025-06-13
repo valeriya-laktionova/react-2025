@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Button } from '../Button/Button';
 import './ItemList.css';
+import { useAppDispatch } from '../../hooks/hooks';
+import { addItem } from '../../store/cartSlice';
 
 type Item = {
   id: string;
@@ -12,10 +14,10 @@ type Item = {
 
 type Props = {
   items: Item[];
-  addItem: (item: Omit<Item, 'img' | 'instructions'>, quantity: number) => void;
 };
 
-export const ItemList: React.FC<Props> = ({ items, addItem }) => {
+export const ItemList: React.FC<Props> = ({ items }) => {
+  const dispatch = useAppDispatch();
   const [quantities, setQuantities] = useState<Record<string, number>>({});
 
   const handleQuantityChange = (id: string, value: string) => {
@@ -37,7 +39,7 @@ export const ItemList: React.FC<Props> = ({ items, addItem }) => {
   ) => {
     e.preventDefault();
     const quantity = getQuantity(id);
-    addItem({ id, meal, price }, quantity);
+    dispatch(addItem({ id, meal, price, quantity }));
   };
 
   return (

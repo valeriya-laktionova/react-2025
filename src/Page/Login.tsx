@@ -6,7 +6,7 @@ import LoginSection from '../components/LoginSection/LoginSection';
 export const Login: React.FC = () => {
   return (
     <div>
-      <Header cartCount={0} />
+      <Header />
       <LoginSection />
       <Footer />
     </div>

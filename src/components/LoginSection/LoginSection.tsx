@@ -1,25 +1,45 @@
 import React, { useState } from 'react';
-import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 import './LoginSection.css';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { login } from '../../store/authSlice';
 
 const LoginSection: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { login, error } = useAuth();
+  const [successMessage, setSuccessMessage] = useState('');
+  const [localError, setLocalError] = useState<string | null>(null);
+
+  const dispatch = useAppDispatch();
+  const { loading, error } = useAppSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSuccessMessage('');
+    setLocalError(null);
+
     try {
-      await login(username, password);
-      alert('Login successful!');
+      const resultAction = await dispatch(login({ email: username, password }));
+
+      if (login.fulfilled.match(resultAction)) {
+        setSuccessMessage('Login successful! Redirecting...');
+        setTimeout(() => {
+          navigate('/Menu');
+        }, 1500);
+      } else {
+        setLocalError('Login failed: ' + (resultAction.payload ?? 'Unknown error'));
+      }
     } catch (err: any) {
-      alert('Login failed: ' + err.message);
+      setLocalError('Unexpected error: ' + err.message);
     }
   };
 
   const handleCancel = () => {
     setUsername('');
     setPassword('');
+    setSuccessMessage('');
+    setLocalError(null);
   };
 
   return (
@@ -37,6 +57,7 @@ const LoginSection: React.FC = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
+              autoComplete="username"
             />
           </div>
           <div className="form-group">
@@ -49,17 +70,24 @@ const LoginSection: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              autoComplete="current-password"
             />
           </div>
           <div className="button-group">
-            <button type="submit" className="submit-btn">
-              Submit
+            <button type="submit" className="submit-btn" disabled={loading}>
+              {loading ? 'Logging in...' : 'Submit'}
             </button>
             <button type="button" className="cancel-btn" onClick={handleCancel}>
               Cancel
             </button>
           </div>
-          {error && <p className="error-text">{error}</p>}
+
+          
+          {(localError || error) && (
+            <p className="error-text">{localError ?? error}</p>
+          )}
+
+          {successMessage && <p className="success-text">{successMessage}</p>}
         </form>
       </div>
     </div>
