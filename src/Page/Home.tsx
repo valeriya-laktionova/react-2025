@@ -1,9 +1,13 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
-import  HomeSection  from '../components/HomeSection/HomeSection'; 
+import HomeSection from '../components/HomeSection/HomeSection';
 
-export const HomePage = ({ totalItemCount }) => {
+type HomePageProps = {
+  totalItemCount: number;
+};
+
+export const HomePage: React.FC<HomePageProps> = ({ totalItemCount }) => {
   return (
     <div>
       <Header cartCount={totalItemCount} />
@@ -12,4 +16,3 @@ export const HomePage = ({ totalItemCount }) => {
     </div>
   );
 };
-
