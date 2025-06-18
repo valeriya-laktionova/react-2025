@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { useState, useMemo } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Menu } from './Page/Menu';
