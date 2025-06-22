@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap");
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+:root {
+  --bg-color: #f5fafa;
+  --text-color: #546285;
+  --heading-color: #35b8be;
+  --paragraph-color: #666;
+  --tooltip-color: #2abfbd;
+  --tooltip-bg: #333;
+  --card-bg: white;
+  --card-heading: #08090a;
+  --price-color: #35b8be;
+  --card-text: #546285;
+  --input-border: #ccc;
+  --button-bg: #35b8be;
+  --button-hover: #2aa6ab;
+  --btn-bg: #f5fafa;
+  --btn-text: #333;
+  --btn-border: rgba(97, 114, 131, 0.2);
+}
+
+[data-theme="dark"] {
+  --bg-color: #13272A;         
+  --header-color: #13272A;
+  --bg-color-second: #121212;
+  --footer-color: #121212;
+  --text-color: #E6F2F3;       
+  --heading-color: #35B8BE;    
+  --accent-color: #D1F3F5;     
+  --card-bg: #13272A;          
+  --border-color: #244044;
+  --input-color: #4e8994;
+   --price-cart: #f5fbfc;
+}
+

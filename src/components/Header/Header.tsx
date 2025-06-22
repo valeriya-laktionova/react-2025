@@ -1,10 +1,12 @@
-
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
 import { Cart } from '../CartIcon/CartIcon';
+import { ThemeContext } from '../../styles/ThemeContext';
 
 export const Header: React.FC = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
     <header className="header">
       <img src="src/assets/logo.svg" alt="Logo" className="logo" />
@@ -19,6 +21,9 @@ export const Header: React.FC = () => {
           </NavLink>
         ))}
       </nav>
+      <button className="theme-toggle" onClick={toggleTheme}>
+        {theme === 'dark' ? '🌙' : '☀️'}
+      </button>
       <Cart />
     </header>
   );

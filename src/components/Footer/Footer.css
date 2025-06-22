@@ -1,9 +1,9 @@
 .site-footer {
-  background-color: #f5fafa;
+  background-color: var(--footer-bg);
   background-image: url('../../assets/24.png');
   padding: 100px 120px 60px;
   font-family: 'Inter', sans-serif;
-  color: #546285;
+  color: var(--footer-text);
   overflow: hidden;
 }
 
@@ -49,7 +49,7 @@
 
 .column-header {
   text-transform: uppercase;
-  color: #08090a;
+  color: var(--footer-header-text);
   font-size: 0.8rem;
   line-height: 20px;
   letter-spacing: 1.5px;
@@ -68,13 +68,13 @@
 }
 
 .footer-col ul li a {
-  color: #546285;
+  color: var(--footer-text);
   text-decoration: none;
   font-size: 0.95rem;
 }
 
 .footer-col ul li a:hover {
-  text-decoration: underline;
+  text-decoration: var(--link-hover);
 }
 
 .footer-bottom {
@@ -84,13 +84,13 @@
   flex-wrap: wrap;
   max-width: 1100px;
   margin: 0 auto;
-  border-top: 1px solid #e0eeee;
+  border-top: 1px solid var(--footer-border);
   padding-top: 20px;
   font-size: 0.9rem;
 }
 
 .footer-bottom a {
-  color: #00bcd4;
+  color: var(--link-color);
   text-decoration: none;
 }
 
