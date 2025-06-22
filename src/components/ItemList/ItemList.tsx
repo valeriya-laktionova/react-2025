@@ -35,11 +35,12 @@ export const ItemList: React.FC<Props> = ({ items }) => {
     e: React.FormEvent,
     id: string,
     meal: string,
-    price: number
+    price: number,
+    img: string
   ) => {
     e.preventDefault();
     const quantity = getQuantity(id);
-    dispatch(addItem({ id, meal, price, quantity }));
+    dispatch(addItem({ id, meal, price, img, quantity }));
   };
 
   return (
@@ -53,7 +54,7 @@ export const ItemList: React.FC<Props> = ({ items }) => {
               <span>${price}</span>
             </div>
             <p className="card-description">{instructions}</p>
-            <form className="order-form" onSubmit={(e) => handleSubmit(e, id, meal, price)}>
+            <form className="order-form" onSubmit={(e) => handleSubmit(e, id, meal, price, img)}>
               <input
                 type="number"
                 min="1"

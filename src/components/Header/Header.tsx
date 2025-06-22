@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
 import { Cart } from '../CartIcon/CartIcon';
-import { useAppSelector } from '../../hooks/hooks';
+import { ThemeContext } from '../../styles/ThemeContext';
 
 export const Header: React.FC = () => {
-  const cartCount = useAppSelector(state =>
-    state.cart.items.reduce((total, item) => total + item.quantity, 0)
-  );
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <header className="header">
@@ -17,13 +15,16 @@ export const Header: React.FC = () => {
           <NavLink
             key={i}
             to={path}
-            className={({ isActive }) => isActive ? 'nav-link menu-active' : 'nav-link'}
+            className={({ isActive }) => (isActive ? 'nav-link menu-active' : 'nav-link')}
           >
             {path === '/' ? 'Home' : path.replace('/', '')}
           </NavLink>
         ))}
       </nav>
-      <Cart cartCount={cartCount} />
+      <button className="theme-toggle" onClick={toggleTheme}>
+        {theme === 'dark' ? '🌙' : '☀️'}
+      </button>
+      <Cart />
     </header>
   );
 };

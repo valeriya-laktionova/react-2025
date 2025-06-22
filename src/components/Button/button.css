@@ -1,17 +1,17 @@
 .btn {
   padding: 16px 40px;
   border-radius: 8px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-family);
   font-size: 1rem;
   cursor: pointer;
-  border: 1px solid rgba(97, 114, 131, 0.2);
-  background-color: #f5fafa;
-  color: #333;
-  transition: background 0.3s ease;
+  border: 1px solid var(--btn-border);
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #35b8be;
+  background-color: var(--button-bg);
   color: #fff;
   border-color: transparent;
 }
@@ -19,7 +19,7 @@
 .btn.add {
   padding: 9px 40px;
   border-radius: 6px;
-  background-color: #35b8be;
+  background-color: var(--button-bg);
   color: white;
   border: none;
   line-height: 27px;
@@ -29,7 +29,7 @@
 
 .btn.see-more {
   grid-column: span 2;
-  background-color: #35B8BE;
+  background-color: var(--button-bg);
   color: white;
   border: none;
   padding: 16px 24px;

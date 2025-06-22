@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  background-color: #f5fafa;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .login-page {
@@ -14,17 +15,18 @@ body {
 .login-title {
   font-size: 50px;
   font-weight: 400;
-  color: #35B8BE;
+  color: var(--primary-color);
   margin-bottom: 40px;
 }
 
 .login-box {
-  background-color: white;
+  background-color: var(--card-bg);
   padding: 40px;
   border-radius: 6px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   min-width: 500px;
   min-height: 120px;
+  color: var(--text-color);
 }
 
 .form-group {
@@ -38,20 +40,21 @@ body {
 .form-group label {
   width: 100px;
   font-size: 18px;
-  color: #000000;
+  color: var(--text-color);
   font-weight: 200;
 }
 
 .form-group input {
   flex: 2;
   padding: 10px;
-  border: 1px solid #e2e2e2;
+  border: 1px solid var(--input-border);
   border-radius: 5px;
-  background-color: #FAFAFA;
+  background-color: var(--input-bg);
+  color: var(--text-color);
 }
 
 .form-group ::placeholder {
-color: #000000;
+  color: var(--text-color);
 }
 
 .button-group {
@@ -61,23 +64,56 @@ color: #000000;
   margin-top: 20px;
 }
 
+
 .submit-btn,
 .cancel-btn {
   padding: 10px 30px;
   font-size: 16px;
   border-radius: 5px;
-  border: none;
   cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
 }
 
-.submit-btn {
+
+body:not([data-theme="dark"]) .submit-btn {
   background-color: #35B8BE;
   color: white;
+  border: none;
 }
 
-.cancel-btn {
+body:not([data-theme="dark"]) .cancel-btn {
   background-color: white;
   color: #333;
   border: 1px solid #e2e2e2;
 }
 
+
+[data-theme="dark"] .submit-btn {
+  background-color: var(--button-bg);
+  color: #fff;
+  border: none;
+}
+
+[data-theme="dark"] .cancel-btn {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.submit-btn:hover,
+.cancel-btn:hover {
+  opacity: 0.9;
+}
+
+.error-text {
+  color: red;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.success-text {
+  color: green;
+  margin-top: 15px;
+  text-align: center;
+}
