@@ -1,5 +1,3 @@
-// src/pages/OrderPage.tsx
-
 import React, { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../../hooks/hooks';
 import { removeItem, updateQuantity, resetCart } from '../../store/cartSlice';
