@@ -7,6 +7,6 @@ export type MenuItem = {
   category: string;
 };
 
-export type CartProduct = Omit<MenuItem, 'img' | 'instructions' | 'category'> & {
+export type CartProduct = Omit<MenuItem,  'instructions' | 'category'> & {
   quantity: number;
 };
