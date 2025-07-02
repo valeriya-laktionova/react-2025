@@ -89,7 +89,7 @@
 
 .order-remove:hover {
   background-color: #2aa6ab;
-}
+
 
 .order-form-wrapper {
   margin-top: 40px;
@@ -119,6 +119,7 @@
   border: 1px solid #ccc;
   font-size: 1rem;
 }
+
 
 .order-heading {
   color: var(--heading-color);
@@ -164,3 +165,4 @@
   color: var(--text-color);
   border: 1px solid var(--border-color);
 }
+
