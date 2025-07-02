@@ -1,9 +1,10 @@
+
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f5fafa;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
   margin: 0;
   padding: 0;
-  color: #546285;
+  color: var(--text-color);
 }
 
 .menu-container {
@@ -18,7 +19,7 @@ body {
 
 .menu-block h2 {
   font-size: 3.12rem;
-  color: #35B8BE;
+  color: var(--heading-color);
   margin-bottom: 26px;
   line-height: 55px;
   letter-spacing: 1.65px;
@@ -26,7 +27,7 @@ body {
 }
 
 .menu-block p {
-  color: #666;
+  color: var(--paragraph-color);
   font-size: 1rem;
   line-height: 27px;
   letter-spacing: 0.36px;
@@ -35,7 +36,7 @@ body {
 
 .menu-block p .tooltip {
   position: relative;
-  color: #2abfbd;
+  color: var(--tooltip-color);
   font-weight: 500;
   cursor: pointer;
   margin: 0 4px;
@@ -44,7 +45,7 @@ body {
 .menu-block p .tooltip .tooltip-text {
   visibility: hidden;
   width: max-content;
-  background-color: #333;
+  background-color: var(--tooltip-bg);
   color: #fff;
   padding: 6px 10px;
   border-radius: 6px;
@@ -86,7 +87,7 @@ body {
 }
 
 .item-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   overflow: hidden;
@@ -98,7 +99,7 @@ body {
 }
 
 .item-card img {
-  width:  100px;
+  width: 100px;
   height: 100px;
   border-radius: 6px;
   object-fit: cover;
@@ -119,18 +120,18 @@ body {
   margin: 0;
   font-weight: 600;
   font-size: 1.1rem;
-  color: #08090a;
+  color: var(--card-heading);
 }
 
 .card-header span {
-  color: #35b8be;
+  color: var(--price-color);
   font-size: 0.95rem;
   font-weight: 500;
 }
 
 .card-details p {
   font-size: 0.92rem;
-  color: #546285;
+  color: var(--card-text);
   margin: 12px 0 14px;
   line-height: 1.4;
 }
@@ -144,14 +145,14 @@ body {
 .order-form input {
   width: 50px;
   height: 40px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--input-border);
   border-radius: 6px;
   text-align: center;
   font-size: 1rem;
 }
 
 .order-form button {
-  background-color: #35b8be;
+  background-color: var(--button-bg);
   color: white;
   border: none;
   padding: 10px 16px;
@@ -162,11 +163,10 @@ body {
 }
 
 .order-form button:hover {
-  background-color: #2aa6ab;
+  background-color: var(--button-hover);
 }
 
-
-
-
-
-
+.menu-section {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}

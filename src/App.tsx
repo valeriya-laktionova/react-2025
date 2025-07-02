@@ -4,8 +4,11 @@ import { Menu } from './Page/Menu';
 import { HomePage } from './Page/Home';
 import { Login } from './Page/Login';
 import Company from './Page/Company';
-import Cart from './Page/Cart'; 
+import Cart from './Page/Cart';
 import PrivateRoute from '../src/route/PrivateRoute';
+import { ThemeProvider } from './styles/ThemeContext';
+import './styles/styles.css';
+
 
 type BasketItem = {
   id: string;
@@ -17,7 +20,10 @@ type BasketItem = {
 const App: React.FC = () => {
   const [basket, setBasket] = useState<BasketItem[]>([]);
 
-  const handleAddToCart = (product: Omit<BasketItem, 'quantity'>, quantity = 1) => {
+  const handleAddToCart = (
+    product: Omit<BasketItem, 'quantity'>,
+    quantity = 1
+  ) => {
     setBasket((prevBasket) => {
       const foundProduct = prevBasket.find((entry) => entry.id === product.id);
       if (foundProduct) {
@@ -36,25 +42,33 @@ const App: React.FC = () => {
   }, [basket]);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route
-          path="/menu"
-          element={<Menu cartItems={basket} onAdd={handleAddToCart} totalItemCount={totalItemCount} />}
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/company" element={<Company />} />
-        <Route
-          path="/order"
-          element={
-            <PrivateRoute>
-              <Cart /> 
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/menu"
+            element={
+              <Menu
+                cartItems={basket}
+                onAdd={handleAddToCart}
+                totalItemCount={totalItemCount}
+              />
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/company" element={<Company />} />
+          <Route
+            path="/order"
+            element={
+              <PrivateRoute>
+                <Cart />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 };
 
