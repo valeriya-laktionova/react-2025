@@ -120,48 +120,46 @@
   font-size: 1rem;
 }
 
-/* 🌙 Темная тема */
-[data-theme="dark"] .order-heading {
+.order-heading {
   color: var(--heading-color);
 }
 
-[data-theme="dark"] .order-empty {
+.order-empty {
   color: var(--text-color);
 }
 
-[data-theme="dark"] .order-item {
+.order-item {
   background-color: var(--card-bg);
   box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
 }
 
-[data-theme="dark"] .order-title {
+.order-title {
   color: var(--text-color);
 }
 
-[data-theme="dark"] .order-price {
+.order-price {
   color: var(--price-cart);
 }
 
-[data-theme="dark"] .order-qty {
+.order-qty {
   background-color: transparent;
   color: var(--text-color);
   border: 1px solid var(--border-color);
 }
 
-[data-theme="dark"] .order-remove {
+.order-remove {
   background-color: var(--button-bg);
   color: white;
 }
 
-[data-theme="dark"] .order-remove:hover {
+.order-remove:hover {
   background-color: var(--button-hover);
 }
 
-[data-theme="dark"] .order-address label {
+.order-address label {
   color: var(--text-color);
 }
-
-[data-theme="dark"] .order-address input {
+.order-address input {
   background-color: transparent;
   color: var(--text-color);
   border: 1px solid var(--border-color);

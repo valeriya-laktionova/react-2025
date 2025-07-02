@@ -74,8 +74,8 @@ const LoginSection: React.FC = () => {
             />
           </div>
           <div className="button-group">
-            <button type="submit" className="submit-btn" disabled={loading}>
-              {loading ? 'Logging in...' : 'Submit'}
+          <button type="submit" className="submit-btn">
+              Submit
             </button>
             <button type="button" className="cancel-btn" onClick={handleCancel}>
               Cancel
