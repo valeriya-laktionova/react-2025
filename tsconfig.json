@@ -15,8 +15,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["react"]
+    "types": ["react", "node"] 
   },
-  "include": ["src", "**/*.ts", "**/*.tsx", "custom.d.ts"],
+  "include": ["src", "**/*.ts", "**/*.tsx", "custom.d.ts", "jest.setup.ts", "jest.config.cjs"],
   "exclude": ["node_modules"]
 }
